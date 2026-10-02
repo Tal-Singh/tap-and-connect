@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7faf8">
+<title>Tap & Connect</title>
+<style>
+:root{--ink:#14231c;--muted:#5f6f67;--green:#147a52;--green2:#e7f5ee;--blue:#245b78;--paper:#f7faf8;--card:#fff;--line:#dbe5df}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Segoe UI,Arial,sans-serif}
+button{font:inherit;-webkit-tap-highlight-color:transparent}.app{max-width:720px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 18px calc(40px + env(safe-area-inset-bottom))}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:21px;font-weight:850;letter-spacing:-.04em}.brand em{font-style:normal;color:var(--green)}.strap{font-size:13px;font-weight:700;color:var(--green)}
+.hero{padding:42px 0 25px}.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:var(--green)}h1{font-size:clamp(43px,12vw,68px);line-height:.94;letter-spacing:-.06em;margin:11px 0 18px}.lead{font-size:19px;line-height:1.48;color:#405249;margin:0;max-width:600px}
+.prompt{margin:26px 0 10px;font-size:15px;font-weight:800}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.choice{min-height:118px;padding:17px;text-align:left;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:20px;box-shadow:0 2px 9px rgba(20,35,28,.04)}.choice .icon{font-size:25px}.choice strong{display:block;font-size:17px;margin:10px 0 3px}.choice small{font-size:13px;color:var(--muted);line-height:1.25}.choice.active{border-color:var(--green);background:var(--green2)}
+.demo{margin:18px 0 0;padding:20px;border-radius:22px;background:#143c2d;color:#fff}.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1.25fr;align-items:center;gap:6px}.node{text-align:center;font-size:14px;font-weight:800}.arrow{font-size:20px;color:#a7e3c9}.result{text-align:center;color:#c7f1de;font-size:14px;font-weight:750;margin-top:15px}
+.section{padding-top:43px}.section h2{font-size:30px;line-height:1.05;letter-spacing:-.045em;margin:0 0 10px}.section>p{font-size:16px;line-height:1.5;color:var(--muted)}
+.pricegrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-top:18px}.price{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:16px 8px;text-align:center}.price.main{border-color:var(--green)}.price span{display:block;font-size:12px;color:var(--muted)}.price strong{display:block;font-size:28px;letter-spacing:-.04em;margin:4px 0}.price small{font-size:11px;color:var(--muted)}
+.bespoke{background:#edf5f8;border:1px solid #cfdee5;border-radius:22px;padding:21px}.tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);font-weight:850}.bespoke h3{font-size:24px;letter-spacing:-.035em;margin:8px 0}.bespoke p{color:#48616e;line-height:1.48;margin:0 0 14px}.quote{font-weight:850;color:var(--blue)}
+.placement{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.placement span{background:#fff;border:1px solid var(--line);padding:9px 11px;border-radius:999px;font-size:13px;color:#42544b}
+.cta{margin-top:42px;background:var(--green2);border:1px solid #bfe2d0;border-radius:22px;padding:22px}.cta h2{font-size:27px;margin:0 0 7px}.cta p{color:#37604d;line-height:1.45;margin:0}.cta b{display:block;font-size:20px;margin-top:13px;color:#0e6341}
+.privateBtn{margin-top:46px;width:100%;min-height:48px;border:1px dashed #9bac9f;border-radius:14px;background:transparent;color:#687970;font-weight:700}.private{display:none;margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px}.private.show{display:block}.private h3{font-size:18px;margin:22px 0 8px}.private h3:first-child{margin-top:0}.private p,.private li{font-size:15px;line-height:1.5;color:#4b5d54}.script{padding:12px 14px;background:var(--green2);border-radius:12px;color:#173e2d!important}.obj{padding:12px 0;border-bottom:1px solid var(--line)}.obj:last-child{border:0}.obj b{display:block;margin-bottom:5px}.money{display:grid;grid-template-columns:1fr 1fr;gap:8px}.money div{background:#f5f8f6;border-radius:12px;padding:11px;font-size:14px}
+.note{font-size:12px!important;color:#7b8982!important}
+@media(max-width:390px){.app{padding-left:15px;padding-right:15px}.hero{padding-top:34px}.grid{gap:8px}.choice{min-height:112px;padding:14px}.pricegrid{grid-template-columns:1fr}.flow{font-size:12px}.node{font-size:12px}}
+</style></head>
+<body><main class="app">
+<header class="top"><div class="brand">Tap <em>&</em> Connect</div><div class="strap">Tap • Scan • Connect</div></header>
+<section class="hero"><div class="eyebrow">Connect customers in seconds</div><h1>One tap.<br>Right place.</h1><p class="lead">A simple NFC + QR setup that takes customers straight to the action that matters to your business.</p></section>
+<p class="prompt">Where would you like customers to go?</p>
+<section class="grid" id="choices">
+<button class="choice active" data-name="Order Direct" data-icon="🛒"><span class="icon">🛒</span><strong>Order direct</strong><small>Your existing ordering page</small></button>
+<button class="choice" data-name="Reviews" data-icon="★"><span class="icon">★</span><strong>Leave a review</strong><small>Your Google review page</small></button>
+<button class="choice" data-name="Bookings" data-icon="📅"><span class="icon">📅</span><strong>Book</strong><small>Your booking system</small></button>
+<button class="choice" data-name="Social" data-icon="📱"><span class="icon">📱</span><strong>Follow</strong><small>Your chosen social profile</small></button>
+<button class="choice" data-name="Website" data-icon="🌐"><span class="icon">🌐</span><strong>Visit website</strong><small>A page you choose</small></button>
+<button class="choice" data-name="Contact" data-icon="💬"><span class="icon">💬</span><strong>Get in touch</strong><small>Your chosen contact route</small></button>
+</section>
+<section class="demo"><div class="flow"><div class="node">CUSTOMER</div><div class="arrow">→</div><div class="node">TAP<br>or SCAN</div><div class="arrow">→</div><div class="node" id="flowDest">🛒 ORDER DIRECT</div></div><div class="result" id="result">Straight to your ordering page.</div></section>
+
+<section class="section"><h2>Ready to use from £49.</h2><p>Supplied, configured for your business, tested and ready for customers.</p>
+<div class="pricegrid"><div class="price main"><span>STARTER</span><strong>£49</strong><small>1 unit</small></div><div class="price"><span>MULTI</span><strong>£79</strong><small>2 units</small></div><div class="price"><span>MULTI</span><strong>£99</strong><small>3 units</small></div></div>
+<p class="note">Starter: £25 to begin • £24 on delivery. 4+ units quoted individually.</p></section>
+
+<section class="section"><div class="bespoke"><div class="tag">Bespoke branding</div><h3>Your logo. Your message. Your destination.</h3><p>A custom-branded NFC + QR sign can send customers directly to your existing ordering page — ideal for a clear “Tap or scan to order direct” call to action.</p><div class="quote">Available to quote</div></div></section>
+
+<section class="section"><h2>Put the connection where the customers are.</h2><p>With permission from the host location, additional units could create a direct route to your business from local workplaces and community locations.</p><div class="placement"><span>Offices</span><span>Call centres</span><span>Factories</span><span>Staff areas</span><span>Local partners</span><span>Community venues</span></div></section>
+
+<section class="cta"><h2>What would work for your business?</h2><p>Choose the destination. Tap & Connect handles the setup and testing.</p><b>Starter setup £49</b></section>
+
+<button class="privateBtn" id="privateBtn" type="button">Tal — pitch notes</button>
+<section class="private" id="private">
+<h3>Opening</h3><p class="script">“Hi, I'm Tal from Tap & Connect. I'm launching a simple service for local businesses that makes it easier for customers to connect with you online — ordering, reviews, bookings or social media. I've got a working demo. Have you got 30 seconds?”</p>
+<h3>Discovery</h3><p>“Which would actually be most useful to you — direct orders, reviews, bookings or something else?”</p>
+<h3>Price</h3><p class="script">“The complete starter setup is £49 — supplied, configured, tested and delivered ready to use. It's £25 to start and £24 when I deliver it.”</p>
+<h3>Multiple units</h3><p class="script">“Definitely. If they're being set up together I can reduce the cost per unit — two are £79, three are £99, and I can quote for larger quantities.”</p>
+<h3>Objections: acknowledge → ask → answer → check</h3>
+<div class="obj"><b>“£49 is expensive.”</b>“I understand. Is it mainly the price, or are you unsure you'd get enough use from it?”</div>
+<div class="obj"><b>“I can buy one online.”</b>“Absolutely. I'm providing the finished setup — supply, configuration, testing and handover. If you're comfortable doing that yourself, you may not need the service.”</div>
+<div class="obj"><b>“We already have a website.”</b>“That's ideal — I'm not replacing it. This gives customers a quicker route straight to the page you want them on.”</div>
+<div class="obj"><b>“We already have a QR code.”</b>“That's good. This adds tap as another option. If what you already have does everything you need, that's fair enough.”</div>
+<div class="obj"><b>“I'll think about it.”</b>“Of course. Is there anything you're unsure about that I can answer before I leave?”</div>
+<div class="obj"><b>“Can you do it cheaper?”</b>“I've kept the starter at £49 because that includes the product, configuration, testing and handover. I prefer to keep the price consistent.”</div>
+<div class="obj"><b>“How will it make me money?”</b>“I wouldn't promise a number without data. The aim is to remove steps between the customer and the action you want them to take.”</div>
+<h3>When they say yes</h3><div class="money"><div><b>1 unit</b><br>£25 start / £24 delivery</div><div><b>2 units</b><br>£40 start / £39 delivery</div><div><b>3 units</b><br>£50 start / £49 delivery</div><div><b>4+</b><br>Quote first</div></div>
+<p>Record: business • contact • phone/email • product/colour • destination • quantity • amount received • balance • order reference.</p>
+<h3>Bespoke request</h3><p class="script">“Yes, I can arrange a bespoke branded version. I'd confirm the design and production cost first and send you a proof before anything goes into production.”</p><p class="note">Do not promise bespoke pricing until supplier capability and production cost are confirmed.</p>
+</section>
+</main>
+<script>
+(()=>{const cs=[...document.querySelectorAll('.choice')],fd=document.getElementById('flowDest'),r=document.getElementById('result');
+const copy={"Order Direct":"Straight to your ordering page.","Reviews":"Straight to your review page.","Bookings":"Straight to your booking page.","Social":"Straight to your social profile.","Website":"Straight to your website.","Contact":"Straight to your chosen contact route."};
+cs.forEach(b=>b.addEventListener('click',()=>{cs.forEach(x=>x.classList.remove('active'));b.classList.add('active');fd.textContent=b.dataset.icon+" "+b.dataset.name.toUpperCase();r.textContent=copy[b.dataset.name];}));
+const btn=document.getElementById('privateBtn'),p=document.getElementById('private');btn.addEventListener('click',()=>{p.classList.toggle('show');btn.textContent=p.classList.contains('show')?'Hide pitch notes':'Tal — pitch notes';});})();
+</script></body></html>
