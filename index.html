@@ -44,9 +44,9 @@ header{display:flex;justify-content:space-between;align-items:center;gap:10px}.b
 <section class="demo"><div class="flow"><div class="node">CUSTOMER</div><div class="arrow">→</div><div class="node">TAP<br>or SCAN</div><div class="arrow">→</div><div class="node" id="flowDest">🛒 ORDER</div></div><div class="result" id="result">Straight to your ordering page.</div></section>
 
 <section class="section"><h2>Ready to use from £49.</h2><p>Supplied, configured for your business, tested and ready for customers.</p>
-<div class="prices"><div class="price"><span>1 UNIT</span><strong>£49</strong><small>Starter</small></div><div class="price"><span>2 UNITS</span><strong>£79</strong><small>Multi-unit</small></div><div class="price"><span>3 UNITS</span><strong>£99</strong><small>Multi-unit</small></div></div></section>
+<div class="prices"><div class="price"><span>1 UNIT</span><strong>£49</strong><small>Starter</small></div><div class="price"><span>2 UNITS</span><strong>£79</strong><small>Multi-unit<br><b>Save £19</b></small></div><div class="price"><span>3 UNITS</span><strong>£99</strong><small>Multi-unit<br><b>Save £48</b></small></div></div></section>
 
-<section class="section"><div class="bespoke"><div class="tag">Bespoke branding</div><div class="mock"><small>YOUR LOGO</small><strong>TAP OR SCAN<br>TO ORDER DIRECT</strong><small> Your destination</small></div><p>Custom artwork can carry your branding and call to action while linking directly to your chosen destination.</p><b>Available to quote</b></div></section>
+<section class="section"><div class="bespoke"><div class="tag">Bespoke branding</div><div class="mock"><small>YOUR LOGO</small><strong>TAP OR SCAN<br>TO ORDER DIRECT</strong><small>NFC + QR • Your destination</small></div><p>Custom artwork can carry your branding and call to action while linking directly to your chosen destination.</p><b>Available to quote</b></div></section>
 </section>
 
 <section id="orderMode" class="tal hidden">
@@ -68,8 +68,8 @@ header{display:flex;justify-content:space-between;align-items:center;gap:10px}.b
 <div class="grid2">
 <div class="field"><label>Package</label><select id="package">
 <option value="49|25|1">Starter — 1 unit — £49</option>
-<option value="79|40|2">Multi — 2 units — £79</option>
-<option value="99|50|3">Multi — 3 units — £99</option>
+<option value="79|40|2">Multi — 2 units — £79 — Save £19</option>
+<option value="99|50|3">Multi — 3 units — £99 — Save £48</option>
 <option value="custom">Bespoke / custom quote</option>
 </select></div>
 <div class="field"><label>Colour / style</label><select id="colour"><option>Black</option><option>White</option><option>To be confirmed</option><option>Bespoke</option></select></div>
@@ -120,7 +120,7 @@ header{display:flex;justify-content:space-between;align-items:center;gap:10px}.b
 
 <section class="panel" id="panel-backup"><div class="card"><h3>Backup</h3><p style="color:var(--muted);font-size:14px">Export after real orders. This is local browser storage, not your permanent CRM.</p><div class="btnrow"><button class="btn primary" id="exportBtn">Export backup</button><label class="btn secondary">Import backup<input id="importFile" type="file" accept="application/json" class="hidden"></label><button class="btn danger" id="wipe">Delete local records</button></div></div></section>
 
-<div class="footer">Tap & Connect • Order workflow • v3.4</div>
+<div class="footer">Tap & Connect • Order workflow • v3.5</div>
 </section>
 </main>
 

@@ -3,7 +3,7 @@
 Mobile-first presentation and order workflow for Tap & Connect NFC + QR services.
 
 ## Current build
-V3.4 — MVP / testing
+V3.5 — MVP / testing
 
 ## Features
 - Customer presentation
@@ -22,5 +22,9 @@ Customer/order data is stored locally in the browser in the current MVP. Export 
 Demo mode is intended for testing the workflow without saving mock orders or advancing live order numbers.
 
 
-## V3.4
+## V3.5
 Multi-unit orders now create a separate action and destination field for every physical unit, so mixed orders such as Instagram + Telegram + bespoke are recorded correctly.
+
+
+## V3.5
+Multi-buy pricing now displays the saving against the £49 single-unit price: 2 units £79 — Save £19; 3 units £99 — Save £48.

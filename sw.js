@@ -1,4 +1,4 @@
-const CACHE='tap-connect-v3-4';
+const CACHE='tap-connect-v3-5';
 const ASSETS=['./manifest.webmanifest'];
 
 self.addEventListener('install', event => {
