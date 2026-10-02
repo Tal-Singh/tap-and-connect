@@ -72,13 +72,11 @@ header{display:flex;justify-content:space-between;align-items:center;gap:10px}.b
 <option value="99|50|3">Multi — 3 units — £99</option>
 <option value="custom">Bespoke / custom quote</option>
 </select></div>
-<div class="field"><label>Customer action</label><select id="action">
-<option>Direct Order</option><option>Google Reviews</option><option>Bookings</option><option>Instagram / Social</option><option>Website</option><option>Contact / WhatsApp</option><option>Other</option>
-</select></div>
 <div class="field"><label>Colour / style</label><select id="colour"><option>Black</option><option>White</option><option>To be confirmed</option><option>Bespoke</option></select></div>
-<div class="field"><label>Quantity</label><input id="qty" type="number" min="1" value="1"></div>
+<div class="field"><label>Quantity</label><input id="qty" type="number" min="1" value="1" readonly></div>
 </div>
-<div class="field"><label>Destination URL</label><input id="url" type="url" placeholder="https://..."></div>
+<div class="field"><label>Unit setup</label><div id="unitDestinations"></div>
+<small style="color:var(--muted)">Each unit can have its own action and destination.</small></div>
 <div class="field"><label>Different destinations / placement / extra notes</label><textarea id="notes" placeholder="Only add this if needed."></textarea></div>
 <div class="grid2">
 <div class="field"><label>Order total</label><input id="total" type="number" step="0.01" value="49"></div>
@@ -89,7 +87,7 @@ header{display:flex;justify-content:space-between;align-items:center;gap:10px}.b
 </div>
 
 <div class="card"><h3>3. Check before sending</h3><div class="checks">
-<label><input type="checkbox" id="urlcheck"> Destination URL checked.</label>
+<label><input type="checkbox" id="urlcheck"> All unit destinations checked.</label>
 <label><input type="checkbox" id="detailscheck"> Customer, package and quantity checked.</label>
 <label><input type="checkbox" id="termscheck"> The referenced Tap & Connect terms will be provided to the customer before payment.</label>
 </div><div class="btnrow"><button class="btn primary" id="generate">Generate Confirmation Request</button><button class="btn secondary" id="clear">Clear</button></div></div>
@@ -122,7 +120,7 @@ header{display:flex;justify-content:space-between;align-items:center;gap:10px}.b
 
 <section class="panel" id="panel-backup"><div class="card"><h3>Backup</h3><p style="color:var(--muted);font-size:14px">Export after real orders. This is local browser storage, not your permanent CRM.</p><div class="btnrow"><button class="btn primary" id="exportBtn">Export backup</button><label class="btn secondary">Import backup<input id="importFile" type="file" accept="application/json" class="hidden"></label><button class="btn danger" id="wipe">Delete local records</button></div></div></section>
 
-<div class="footer">Tap & Connect • Order workflow • v3.3</div>
+<div class="footer">Tap & Connect • Order workflow • v3.4</div>
 </section>
 </main>
 
@@ -143,13 +141,40 @@ document.querySelectorAll(".choice").forEach(b=>b.onclick=()=>{document.querySel
 
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));t.classList.add("active");$("panel-"+t.dataset.tab).classList.add("active");render();});
 
-$("package").onchange=()=>{const v=$("package").value;if(v==="custom"){["total","deposit"].forEach(x=>$(x).value="");$("qty").value=1;return;}const [t,d,q]=v.split("|");$("total").value=t;$("deposit").value=d;$("qty").value=q;};
+const ACTIONS=["Direct Order","Google Reviews","Bookings","Instagram","Facebook","TikTok","Telegram","Website","Contact / WhatsApp","Bespoke / Other"];
+function renderUnits(qty){
+ const old=getUnits();
+ const wrap=$("unitDestinations"); wrap.innerHTML="";
+ const n=Math.max(1,Math.min(20,Number(qty)||1));
+ for(let i=0;i<n;i++){
+  const prev=old[i]||{};
+  const row=document.createElement("div"); row.className="summary"; row.style.marginBottom="10px";
+  const title=document.createElement("b"); title.textContent=`Unit ${i+1}`;
+  const grid=document.createElement("div"); grid.className="grid2"; grid.style.marginTop="8px";
+  const af=document.createElement("div"); af.className="field";
+  const al=document.createElement("label"); al.textContent="Action";
+  const sel=document.createElement("select"); sel.className="unitAction";
+  ACTIONS.forEach(v=>{const op=document.createElement("option");op.textContent=v;op.value=v;if(prev.action===v)op.selected=true;sel.appendChild(op)});
+  af.append(al,sel);
+  const uf=document.createElement("div"); uf.className="field";
+  const ul=document.createElement("label"); ul.textContent="Destination URL";
+  const inp=document.createElement("input");inp.type="url";inp.className="unitUrl";inp.placeholder="https://...";inp.value=prev.url||"";
+  uf.append(ul,inp);grid.append(af,uf);row.append(title,grid);wrap.appendChild(row);
+ }
+}
+function getUnits(){
+ const wrap=$("unitDestinations"); if(!wrap)return[];
+ return [...wrap.querySelectorAll(".summary")].map((r,i)=>({unit:i+1,action:r.querySelector(".unitAction").value,url:r.querySelector(".unitUrl").value.trim()}));
+}
+function unitText(units){return units.map(u=>`Unit ${u.unit}: ${u.action} — ${u.url||"Destination to be confirmed"}`).join("\n");}
+$("package").onchange=()=>{const v=$("package").value;if(v==="custom"){["total","deposit"].forEach(x=>$(x).value="");$("qty").value=1;renderUnits(1);return;}const [t,d,q]=v.split("|");$("total").value=t;$("deposit").value=d;$("qty").value=q;renderUnits(q);};
+renderUnits(1);
 
 function getForm(){
  return {
   business:$("business").value.trim(),contact:$("contact").value.trim(),email:$("email").value.trim(),phone:$("phone").value.trim(),
-  pkg:$("package").selectedOptions[0].text,action:$("action").value,colour:$("colour").value,qty:Number($("qty").value||1),
-  url:$("url").value.trim(),notes:$("notes").value.trim(),total:Number($("total").value||0),deposit:Number($("deposit").value||0),
+  pkg:$("package").selectedOptions[0].text,units:getUnits(),colour:$("colour").value,qty:Number($("qty").value||1),
+  notes:$("notes").value.trim(),total:Number($("total").value||0),deposit:Number($("deposit").value||0),
   turnaround:$("turnaround").value,termsVersion:$("termsVersion").value.trim()
  };
 }
@@ -174,9 +199,9 @@ Order reference: ${o.ref}
 Business: ${o.business}
 Package: ${o.pkg}
 Quantity: ${o.qty}
-Customer action: ${o.action}
-Colour / style: ${o.colour}
-Destination: ${o.url||"To be confirmed"}${o.notes?`\nNotes: ${o.notes}`:""}
+Unit setup:
+${unitText(o.units)}
+Colour / style: ${o.colour}${o.notes?`\nNotes: ${o.notes}`:""}
 
 Order total: ${money(o.total)}
 Initial payment required: ${money(o.deposit)}
@@ -208,7 +233,7 @@ $("generate").onclick=()=>{
  if(!$("detailscheck").checked){alert("Please confirm you checked the customer and order details.");return;}
  if(!$("termscheck").checked){alert("Confirm that the referenced terms will be provided before payment.");return;}
  draft={...o,ref:nextRef(),demo:isDemo(),status:"Draft",paid:0,payments:[],events:[{at:stamp(),text:isDemo()?"DEMO order confirmation drafted":"Order confirmation drafted"}]};
- $("orderPreview").innerHTML=`<b>${draft.ref}</b> — ${esc(draft.business)}<br>${esc(draft.pkg)}<br>Total <b>${money(draft.total)}</b> • Initial payment <b>${money(draft.deposit)}</b> • Estimated turnaround <b>${esc(draft.turnaround)}</b>`;
+ $("orderPreview").innerHTML=`<b>${draft.ref}</b> — ${esc(draft.business)}<br>${esc(draft.pkg)}<br>${draft.units.map(u=>`Unit ${u.unit}: ${esc(u.action)}`).join("<br>")}<br>Total <b>${money(draft.total)}</b> • Initial payment <b>${money(draft.deposit)}</b> • Estimated turnaround <b>${esc(draft.turnaround)}</b>`;
  $("approvalEmail").value=orderEmail(draft);
  $("approvalCard").classList.remove("hidden");
  $("approvalCard").scrollIntoView({behavior:"smooth",block:"start"});
@@ -357,7 +382,7 @@ $("openPayment").onclick=()=>{
 };
 
 $("clear").onclick=()=>{
- ["business","contact","email","phone","url","notes"].forEach(id=>$(id).value="");
+ ["business","contact","email","phone","notes"].forEach(id=>$(id).value="");
  $("package").value="49|25|1";$("package").onchange();
  $("approvalCard").classList.add("hidden");draft=null;
 };

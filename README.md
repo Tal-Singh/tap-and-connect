@@ -3,7 +3,7 @@
 Mobile-first presentation and order workflow for Tap & Connect NFC + QR services.
 
 ## Current build
-V3.3 — MVP / testing
+V3.4 — MVP / testing
 
 ## Features
 - Customer presentation
@@ -20,3 +20,7 @@ V3.3 — MVP / testing
 Customer/order data is stored locally in the browser in the current MVP. Export a backup after live transactions.
 
 Demo mode is intended for testing the workflow without saving mock orders or advancing live order numbers.
+
+
+## V3.4
+Multi-unit orders now create a separate action and destination field for every physical unit, so mixed orders such as Instagram + Telegram + bespoke are recorded correctly.
