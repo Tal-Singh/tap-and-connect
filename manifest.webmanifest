@@ -1,0 +1,9 @@
+{
+  "name": "Tap & Connect",
+  "short_name": "Tap & Connect",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7faf8",
+  "theme_color": "#f7faf8",
+  "description": "Tap & Connect mobile sales and order MVP"
+}

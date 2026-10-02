@@ -4,35 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f7faf8">
+<link rel="manifest" href="manifest.webmanifest">
 <title>Tap & Connect</title>
 <style>
-:root{--ink:#10251c;--muted:#5a6d63;--green:#087a4d;--pale:#e8f6ef;--paper:#f7faf8;--white:#fff;--line:#d7e3dc;--blue:#285e78}
+:root{--ink:#10251c;--muted:#5f7167;--green:#087a4d;--pale:#e9f6ef;--paper:#f7faf8;--white:#fff;--line:#d7e3dc;--amberbg:#fff6dc;--amber:#735100;--blue:#285e78;--danger:#982c2c}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Segoe UI,Arial,sans-serif}
-button{font:inherit;-webkit-tap-highlight-color:transparent}.app{max-width:720px;margin:auto;padding:calc(16px + env(safe-area-inset-top)) 16px calc(44px + env(safe-area-inset-bottom))}
-.top{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-size:21px;font-weight:900;letter-spacing:-.045em}.brand i{font-style:normal;color:var(--green)}.strap{font-size:12px;font-weight:800;color:var(--green)}
-.hero{padding:34px 0 19px}.kicker{color:var(--green);font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.hero h1{font-size:clamp(42px,11.5vw,66px);line-height:.95;letter-spacing:-.062em;margin:9px 0 14px}.hero p{font-size:18px;line-height:1.45;color:#40544a;margin:0;max-width:610px}
-.question{font-size:16px;font-weight:850;margin:20px 0 10px}
-.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.choice{position:relative;min-height:84px;border:1.5px solid var(--line);background:var(--white);border-radius:17px;padding:12px 8px;color:var(--ink);text-align:center;font-weight:800;cursor:pointer}.choice .ico{display:block;font-size:21px;margin-bottom:5px}.choice .check{display:none;position:absolute;top:6px;right:7px;width:19px;height:19px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;line-height:19px}.choice.active{border-color:var(--green);background:var(--pale);box-shadow:inset 0 0 0 1px var(--green)}.choice.active .check{display:block}
-.demo{margin-top:13px;background:#113e2d;color:#fff;border-radius:19px;padding:16px}.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1.25fr;align-items:center;gap:5px}.node{text-align:center;font-size:12px;font-weight:900;line-height:1.2}.arrow{color:#9ee1c3;font-size:18px}.result{text-align:center;color:#c9f3df;font-size:13px;font-weight:750;margin-top:11px}
-.scrollhint{text-align:center;color:#75857d;font-size:12px;margin:13px 0 0}
-.section{padding-top:38px}.section h2{font-size:29px;line-height:1.05;letter-spacing:-.045em;margin:0 0 8px}.section>p{font-size:15px;line-height:1.5;color:var(--muted)}
+button,input,select,textarea{font:inherit}.app{max-width:760px;margin:auto;padding:calc(14px + env(safe-area-inset-top)) 14px calc(44px + env(safe-area-inset-bottom))}
+header{display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{font-size:21px;font-weight:900;letter-spacing:-.045em}.brand i{font-style:normal;color:var(--green)}.modeBtn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px;font-weight:850;color:#385147}
+.hero{padding:31px 0 18px}.kicker{color:var(--green);font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.hero h1{font-size:clamp(42px,11.5vw,66px);line-height:.95;letter-spacing:-.062em;margin:9px 0 14px}.hero p{font-size:18px;line-height:1.45;color:#40544a;margin:0}
+.question{font-size:16px;font-weight:850;margin:18px 0 10px}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.choice{position:relative;min-height:82px;border:1.5px solid var(--line);background:#fff;border-radius:17px;padding:11px 7px;color:var(--ink);text-align:center;font-weight:800}.choice .ico{display:block;font-size:21px;margin-bottom:5px}.choice .check{display:none;position:absolute;top:6px;right:7px;width:19px;height:19px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;line-height:19px}.choice.active{border-color:var(--green);background:var(--pale);box-shadow:inset 0 0 0 1px var(--green)}.choice.active .check{display:block}
+.demo{margin-top:13px;background:#113e2d;color:#fff;border-radius:19px;padding:16px}.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1.2fr;align-items:center;gap:5px}.node{text-align:center;font-size:12px;font-weight:900}.arrow{color:#9ee1c3;font-size:18px}.result{text-align:center;color:#c9f3df;font-size:13px;font-weight:750;margin-top:10px}
+.section{padding-top:34px}.section h2{font-size:29px;line-height:1.05;letter-spacing:-.045em;margin:0 0 8px}.section>p{font-size:15px;line-height:1.5;color:var(--muted)}
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}.price{background:#fff;border:1.5px solid var(--line);border-radius:17px;padding:14px 5px;text-align:center}.price.main{border-color:var(--green)}.price span{display:block;font-size:11px;font-weight:800;color:var(--muted)}.price strong{display:block;font-size:27px;letter-spacing:-.04em;margin:3px 0}.price small{font-size:11px;color:var(--muted)}
-.fine{font-size:12px!important;color:#7b8b82!important}
-.bespoke{border-radius:21px;background:#edf5f8;border:1px solid #cbdde5;padding:20px}.tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:var(--blue)}.mock{margin:15px 0;background:#fff;border:1px solid #d5e1e6;border-radius:16px;padding:18px;text-align:center;box-shadow:0 4px 14px rgba(30,65,80,.05)}.logo{font-size:13px;font-weight:900;color:#809099;letter-spacing:.08em}.mock strong{display:block;font-size:23px;line-height:1.05;margin:10px 0 6px}.mock span{font-size:13px;color:#58707d}.quote{font-weight:900;color:var(--blue)}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.chips span{background:#fff;border:1px solid var(--line);padding:8px 10px;border-radius:999px;font-size:12px;color:#45584e}
-.cta{margin-top:38px;border:1px solid #bce2cf;background:var(--pale);border-radius:21px;padding:20px}.cta h2{font-size:26px;margin:0 0 6px;letter-spacing:-.04em}.cta p{margin:0;color:#3c624f;line-height:1.45}.cta b{display:block;color:#08653f;font-size:19px;margin-top:11px}
-.notesBtn{width:100%;min-height:46px;margin-top:42px;background:transparent;border:1px dashed #9cac9f;border-radius:13px;color:#6b7b72;font-weight:750}.notes{display:none;margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px}.notes.show{display:block}.notes h3{font-size:17px;margin:20px 0 7px}.notes h3:first-child{margin-top:0}.notes p,.obj{font-size:14px;line-height:1.48;color:#4c5f55}.script{background:var(--pale);border-radius:11px;padding:11px 12px;color:#193d2d!important}.obj{padding:10px 0;border-bottom:1px solid var(--line)}.obj b{display:block;color:var(--ink);margin-bottom:4px}.money{display:grid;grid-template-columns:1fr 1fr;gap:7px}.money div{background:#f4f7f5;padding:10px;border-radius:11px;font-size:13px}
-@media(max-width:390px){.app{padding-left:14px;padding-right:14px}.hero{padding-top:29px}.hero h1{font-size:43px}.hero p{font-size:17px}.choices{gap:6px}.choice{min-height:80px;padding:10px 5px;font-size:13px}.choice .ico{font-size:19px}.prices{gap:6px}.price strong{font-size:24px}}
-</style></head>
-<body><main class="app">
-<header class="top"><div class="brand">Tap <i>&</i> Connect</div><div class="strap">Tap • Scan • Connect</div></header>
+.bespoke{border-radius:21px;background:#edf5f8;border:1px solid #cbdde5;padding:20px}.tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:var(--blue)}.mock{margin:15px 0;background:#fff;border:1px solid #d5e1e6;border-radius:16px;padding:18px;text-align:center}.mock strong{display:block;font-size:23px;line-height:1.05;margin:7px 0}
+.hidden{display:none!important}.tal h1{font-size:34px;letter-spacing:-.05em;margin:22px 0 4px}.talIntro{color:var(--muted);margin:0 0 12px}.notice{border:1px solid #ecd48f;background:var(--amberbg);padding:11px 12px;border-radius:14px;color:var(--amber);font-size:13px;line-height:1.4}
+.tabs{display:flex;gap:7px;overflow:auto;padding:10px 0 4px}.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-weight:800;color:#445a4e}.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}.panel{display:none}.panel.active{display:block}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}.card h3{margin:0 0 12px;font-size:20px;letter-spacing:-.025em}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{margin-bottom:11px}.field label{display:block;font-size:12px;font-weight:850;color:#51645a;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;border:1px solid #cad9d1;background:#fff;border-radius:12px;padding:12px;color:var(--ink);outline:none}.field textarea{min-height:88px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(8,122,77,.1)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:900;cursor:pointer}.primary{background:var(--green);color:#fff}.secondary{background:#eef3f0;color:var(--ink);border:1px solid var(--line)}.dark{background:var(--ink);color:#fff}.danger{background:#fff0f0;color:var(--danger);border:1px solid #ecc}
+.summary{background:#f4f8f5;border:1px solid var(--line);border-radius:14px;padding:13px;font-size:14px;line-height:1.5}.emailbox{min-height:310px!important;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.45}.checks label{display:flex;gap:8px;align-items:flex-start;margin:9px 0;font-size:13px;line-height:1.35}
+.order{border-top:1px solid var(--line);padding:13px 0}.order:first-child{border-top:0}.orderTop{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.orderTitle{font-weight:900}.meta{font-size:12px;color:var(--muted);margin-top:3px}.status{display:inline-block;padding:5px 8px;border-radius:999px;background:#eef3f0;font-size:11px;font-weight:900}.wait{background:#fff1cf;color:#7a5600}.good{background:#e2f5e9;color:#09643c}.money{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}.metric{background:#f5f8f6;border-radius:10px;padding:9px}.metric small{display:block;color:var(--muted);font-size:10px}.metric b{font-size:15px}.timeline{border-left:2px solid #d7e4dc;margin:10px 0 0 6px;padding-left:12px}.event{margin:9px 0;font-size:12px;color:#46594e}.event b{color:var(--ink)}.footer{font-size:11px;color:#7a8a82;margin-top:26px;line-height:1.4}
+@media(max-width:430px){.grid2{grid-template-columns:1fr}.hero h1{font-size:43px}.choices{gap:6px}.choice{font-size:13px;min-height:79px}.price strong{font-size:24px}}
+</style>
+</head>
+<body>
+<main class="app">
+<header><div class="brand">Tap <i>&</i> Connect</div><button class="modeBtn" id="modeBtn">Tal Mode</button></header>
 
-<section class="hero">
-<div class="kicker">Make customer actions simpler</div>
-<h1>One tap.<br>Straight to action.</h1>
-<p>Send customers directly to the place that matters — ordering, reviews, bookings, social media or your website.</p>
-</section>
-
+<section id="customerMode">
+<section class="hero"><div class="kicker">Make customer actions simpler</div><h1>One tap.<br>Straight to action.</h1><p>Send customers directly to ordering, reviews, bookings, social media, your website or the contact route that matters.</p></section>
 <div class="question">What would be useful for your business?</div>
 <section class="choices">
 <button class="choice active" data-name="Order" data-icon="🛒"><span class="check">✓</span><span class="ico">🛒</span>Order</button>
@@ -42,50 +41,347 @@ button{font:inherit;-webkit-tap-highlight-color:transparent}.app{max-width:720px
 <button class="choice" data-name="Website" data-icon="🌐"><span class="check">✓</span><span class="ico">🌐</span>Website</button>
 <button class="choice" data-name="Contact" data-icon="💬"><span class="check">✓</span><span class="ico">💬</span>Contact</button>
 </section>
-
 <section class="demo"><div class="flow"><div class="node">CUSTOMER</div><div class="arrow">→</div><div class="node">TAP<br>or SCAN</div><div class="arrow">→</div><div class="node" id="flowDest">🛒 ORDER</div></div><div class="result" id="result">Straight to your ordering page.</div></section>
-<div class="scrollhint">↓ Setup & pricing</div>
 
-<section class="section">
-<h2>Ready to use from £49.</h2>
-<p>Supplied, configured for your business, tested and ready for customers.</p>
-<div class="prices"><div class="price main"><span>1 UNIT</span><strong>£49</strong><small>Starter</small></div><div class="price"><span>2 UNITS</span><strong>£79</strong><small>Save £19</small></div><div class="price"><span>3 UNITS</span><strong>£99</strong><small>Save £48</small></div></div>
-<p class="fine">Starter payment: £25 to begin, £24 on delivery. 4+ units available by quote.</p>
+<section class="section"><h2>Ready to use from £49.</h2><p>Supplied, configured for your business, tested and ready for customers.</p>
+<div class="prices"><div class="price main"><span>1 UNIT</span><strong>£49</strong><small>Starter</small></div><div class="price"><span>2 UNITS</span><strong>£79</strong><small>Multi-unit</small></div><div class="price"><span>3 UNITS</span><strong>£99</strong><small>Multi-unit</small></div></div></section>
+
+<section class="section"><div class="bespoke"><div class="tag">Bespoke branding</div><div class="mock"><small>YOUR LOGO</small><strong>TAP OR SCAN<br>TO ORDER DIRECT</strong><small>NFC + QR • Your destination</small></div><p>Custom artwork can carry your branding and call to action while linking directly to your chosen destination.</p><b>Available to quote</b></div></section>
 </section>
 
-<section class="section"><div class="bespoke">
-<div class="tag">Bespoke branding</div>
-<div class="mock"><div class="logo">YOUR LOGO</div><strong>TAP OR SCAN<br>TO ORDER DIRECT</strong><span>NFC + QR • Your ordering page</span></div>
-<p>Custom artwork can carry your branding and a clear call to action while linking directly to your existing ordering system.</p>
-<div class="quote">Available to quote</div>
-</div></section>
+<section id="talMode" class="tal hidden">
+<h1>Tal Mode</h1>
+<p class="talIntro">Pitch → build order → customer confirms → take payment → verify → payment confirmation + estimated turnaround.</p>
+<div class="notice">MVP control mode: customer communications and payments stay manual. Order data is stored only in this browser, so export a backup after real transactions.</div>
+<nav class="tabs"><button class="tab active" data-tab="build">Build Order</button><button class="tab" data-tab="orders">Orders</button><button class="tab" data-tab="payment">Payment</button><button class="tab" data-tab="backup">Backup</button></nav>
 
-<section class="section"><h2>Put the connection where customers are.</h2><p>With permission from the host location, additional units could provide a direct route to your business from places your potential customers already spend time.</p><div class="chips"><span>Offices</span><span>Call centres</span><span>Factories</span><span>Staff areas</span><span>Local partners</span><span>Community venues</span></div></section>
+<section class="panel active" id="panel-build">
+<div class="card"><h3>1. Customer</h3>
+<div class="grid2">
+<div class="field"><label>Business name</label><input id="business" placeholder="e.g. Joe's Barbers"></div>
+<div class="field"><label>Contact name</label><input id="contact" placeholder="e.g. Joe"></div>
+<div class="field"><label>Email</label><input id="email" type="email" placeholder="customer@example.com"></div>
+<div class="field"><label>Phone (optional)</label><input id="phone" type="tel"></div>
+</div></div>
 
-<section class="cta"><h2>What would work for your business?</h2><p>Choose the destination. Tap & Connect handles the configuration and testing.</p><b>Starter setup £49</b></section>
+<div class="card"><h3>2. Select the order</h3>
+<div class="grid2">
+<div class="field"><label>Package</label><select id="package">
+<option value="49|25|1">Starter — 1 unit — £49</option>
+<option value="79|40|2">Multi — 2 units — £79</option>
+<option value="99|50|3">Multi — 3 units — £99</option>
+<option value="custom">Bespoke / custom quote</option>
+</select></div>
+<div class="field"><label>Customer action</label><select id="action">
+<option>Direct Order</option><option>Google Reviews</option><option>Bookings</option><option>Instagram / Social</option><option>Website</option><option>Contact / WhatsApp</option><option>Other</option>
+</select></div>
+<div class="field"><label>Colour / style</label><select id="colour"><option>Black</option><option>White</option><option>To be confirmed</option><option>Bespoke</option></select></div>
+<div class="field"><label>Quantity</label><input id="qty" type="number" min="1" value="1"></div>
+</div>
+<div class="field"><label>Destination URL</label><input id="url" type="url" placeholder="https://..."></div>
+<div class="field"><label>Different destinations / placement / extra notes</label><textarea id="notes" placeholder="Only add this if needed."></textarea></div>
+<div class="grid2">
+<div class="field"><label>Order total</label><input id="total" type="number" step="0.01" value="49"></div>
+<div class="field"><label>Initial payment</label><input id="deposit" type="number" step="0.01" value="25"></div>
+</div>
+<div class="field"><label>Estimated turnaround</label><select id="turnaround"><option>7–10 working days</option><option>To be confirmed for bespoke order</option></select></div>
+<div class="field"><label>Terms version / reference</label><input id="termsVersion" value="Tap & Connect Order Terms v1.0"></div>
+</div>
 
-<button class="notesBtn" id="notesBtn">Tal — pitch notes</button>
-<section class="notes" id="notes">
-<h3>Opening</h3><p class="script">“Hi, I'm Tal from Tap & Connect. I'm launching a simple service for local businesses that makes it easier for customers to connect with you online — ordering, reviews, bookings or social media. I've got a working demo. Have you got 30 seconds?”</p>
-<h3>Discovery</h3><p>“Which would actually be most useful to you — direct orders, reviews, bookings or something else?”</p>
-<h3>Price</h3><p class="script">“The complete starter setup is £49 — supplied, configured, tested and delivered ready to use. It's £25 to start and £24 when I deliver it.”</p>
-<h3>Multiple units</h3><p class="script">“If they're being set up together I can reduce the cost per unit — two are £79, three are £99, and I can quote for larger quantities.”</p>
-<h3>Objections</h3>
-<div class="obj"><b>“£49 is expensive.”</b>“I understand. Is it mainly the price, or are you unsure you'd get enough use from it?”</div>
-<div class="obj"><b>“I can buy one online.”</b>“Absolutely. I'm providing the finished setup — supply, configuration, testing and handover. If you're comfortable doing that yourself, you may not need the service.”</div>
-<div class="obj"><b>“We already have a website.”</b>“That's ideal — I'm not replacing it. This gives customers a quicker route straight to the page you want them on.”</div>
-<div class="obj"><b>“We already have a QR code.”</b>“That's good. This adds tap as another option. If what you already have does everything you need, that's fair enough.”</div>
-<div class="obj"><b>“I'll think about it.”</b>“Of course. Is there anything you're unsure about that I can answer before I leave?”</div>
-<div class="obj"><b>“Can you do it cheaper?”</b>“I've kept the starter at £49 because that includes the product, configuration, testing and handover. I prefer to keep the price consistent.”</div>
-<div class="obj"><b>“How will it make me money?”</b>“I wouldn't promise a number without data. The aim is to remove steps between the customer and the action you want them to take.”</div>
-<h3>When they say yes</h3><div class="money"><div><b>1 unit</b><br>£25 start / £24 delivery</div><div><b>2 units</b><br>£40 start / £39 delivery</div><div><b>3 units</b><br>£50 start / £49 delivery</div><div><b>4+</b><br>Quote first</div></div>
-<p>Record: business • contact • phone/email • product/colour • destination • quantity • amount received • balance • order reference.</p>
-<h3>Bespoke request</h3><p class="script">“Yes, I can arrange a bespoke branded version. I'd confirm the design and production cost first and send you a proof before anything goes into production.”</p>
+<div class="card"><h3>3. Check before sending</h3><div class="checks">
+<label><input type="checkbox" id="urlcheck"> Destination URL checked.</label>
+<label><input type="checkbox" id="detailscheck"> Customer, package and quantity checked.</label>
+<label><input type="checkbox" id="termscheck"> The referenced Tap & Connect terms will be provided to the customer before payment.</label>
+</div><div class="btnrow"><button class="btn primary" id="generate">Generate Confirmation Request</button><button class="btn secondary" id="clear">Clear</button></div></div>
+
+<div class="card hidden" id="approvalCard"><h3>4. Send for customer confirmation</h3>
+<div class="summary" id="orderPreview"></div>
+<div class="field" style="margin-top:12px"><label>Editable email</label><textarea class="emailbox" id="approvalEmail"></textarea></div>
+<div class="btnrow"><button class="btn secondary" id="copyApproval">Copy email</button><button class="btn primary" id="openApproval">Open in email app</button><button class="btn dark" id="saveAwaiting">Save as awaiting confirmation</button></div>
+</div>
+</section>
+
+<section class="panel" id="panel-orders"><div class="card"><h3>Orders</h3><div id="ordersList"></div></div></section>
+
+<section class="panel" id="panel-payment">
+<div class="card"><h3>Verify payment</h3>
+<div class="field"><label>Order</label><select id="payOrder"></select></div>
+<div class="grid2">
+<div class="field"><label>Amount received</label><input id="payAmount" type="number" step="0.01"></div>
+<div class="field"><label>Method</label><select id="payMethod"><option>Bank transfer</option><option>Cash</option><option>Card / Tap to Pay</option><option>Other</option></select></div>
+</div>
+<div class="checks"><label><input type="checkbox" id="verified">I have personally verified that the money has been received / cash is in hand.</label></div>
+<div class="btnrow"><button class="btn primary" id="recordPayment">Record Payment & Generate Confirmation</button></div>
+</div>
+
+<div class="card hidden" id="paymentCard"><h3>Payment confirmation</h3>
+<div class="field"><label>Editable email</label><textarea class="emailbox" id="paymentEmail"></textarea></div>
+<div class="btnrow"><button class="btn secondary" id="copyPayment">Copy email</button><button class="btn primary" id="openPayment">Open in email app</button></div>
+</div>
+</section>
+
+<section class="panel" id="panel-backup"><div class="card"><h3>Backup</h3><p style="color:var(--muted);font-size:14px">Export after real orders. This is local browser storage, not your permanent CRM.</p><div class="btnrow"><button class="btn primary" id="exportBtn">Export backup</button><label class="btn secondary">Import backup<input id="importFile" type="file" accept="application/json" class="hidden"></label><button class="btn danger" id="wipe">Delete local records</button></div></div></section>
+
+<div class="footer">Tap & Connect V3 MVP • Tal Singh • customer pitch + guided confirmation + manual payment verification + payment confirmation.</div>
 </section>
 </main>
+
 <script>
-(()=>{const cs=[...document.querySelectorAll('.choice')],fd=document.getElementById('flowDest'),r=document.getElementById('result');
-const copy={Order:"Straight to your ordering page.",Reviews:"Straight to your Google review page.",Bookings:"Straight to your booking page.",Social:"Straight to your social profile.",Website:"Straight to your website.",Contact:"Straight to your chosen contact route."};
-cs.forEach(b=>b.addEventListener('click',()=>{cs.forEach(x=>x.classList.remove('active'));b.classList.add('active');fd.textContent=b.dataset.icon+" "+b.dataset.name.toUpperCase();r.textContent=copy[b.dataset.name];}));
-const btn=document.getElementById('notesBtn'),notes=document.getElementById('notes');btn.addEventListener('click',()=>{notes.classList.toggle('show');btn.textContent=notes.classList.contains('show')?"Hide pitch notes":"Tal — pitch notes";});})();
-</script></body></html>
+const $=id=>document.getElementById(id);
+const money=n=>"£"+Number(n||0).toFixed(2);
+const stamp=()=>new Date().toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"});
+let db=JSON.parse(localStorage.getItem("tapconnect_v3")||'{"next":1,"orders":[]}');
+let draft=null;
+const persist=()=>localStorage.setItem("tapconnect_v3",JSON.stringify(db));
+const nextRef=()=> "TC-"+String(db.next).padStart(3,"0");
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+
+$("modeBtn").onclick=()=>{$("customerMode").classList.toggle("hidden");$("talMode").classList.toggle("hidden");$("modeBtn").textContent=$("talMode").classList.contains("hidden")?"Tal Mode":"Customer Mode";render();};
+
+document.querySelectorAll(".choice").forEach(b=>b.onclick=()=>{document.querySelectorAll(".choice").forEach(x=>x.classList.remove("active"));b.classList.add("active");$("flowDest").textContent=b.dataset.icon+" "+b.dataset.name.toUpperCase();const m={Order:"Straight to your ordering page.",Reviews:"Straight to your Google review page.",Bookings:"Straight to your booking page.",Social:"Straight to your social profile.",Website:"Straight to your website.",Contact:"Straight to your chosen contact route."};$("result").textContent=m[b.dataset.name];});
+
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));t.classList.add("active");$("panel-"+t.dataset.tab).classList.add("active");render();});
+
+$("package").onchange=()=>{const v=$("package").value;if(v==="custom"){["total","deposit"].forEach(x=>$(x).value="");$("qty").value=1;return;}const [t,d,q]=v.split("|");$("total").value=t;$("deposit").value=d;$("qty").value=q;};
+
+function getForm(){
+ return {
+  business:$("business").value.trim(),contact:$("contact").value.trim(),email:$("email").value.trim(),phone:$("phone").value.trim(),
+  pkg:$("package").selectedOptions[0].text,action:$("action").value,colour:$("colour").value,qty:Number($("qty").value||1),
+  url:$("url").value.trim(),notes:$("notes").value.trim(),total:Number($("total").value||0),deposit:Number($("deposit").value||0),
+  turnaround:$("turnaround").value,termsVersion:$("termsVersion").value.trim()
+ };
+}
+
+function confirmLink(o){
+ const subject=`Confirmed — ${o.ref}`;
+ const body=`I confirm that the order details for ${o.ref} are correct and I agree to proceed on the basis of the ${o.termsVersion} provided to me.`;
+ return `mailto:tapandconnectuk@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function orderEmail(o){
+ const balance=Math.max(0,o.total-o.deposit);
+ return `Subject: Tap & Connect — Please Confirm Order ${o.ref}
+
+Hi ${o.contact||"there"},
+
+Thanks for choosing Tap & Connect.
+
+Please check the order summary below carefully before payment:
+
+Order reference: ${o.ref}
+Business: ${o.business}
+Package: ${o.pkg}
+Quantity: ${o.qty}
+Customer action: ${o.action}
+Colour / style: ${o.colour}
+Destination: ${o.url||"To be confirmed"}${o.notes?`\nNotes: ${o.notes}`:""}
+
+Order total: ${money(o.total)}
+Initial payment required: ${money(o.deposit)}
+Balance after initial payment: ${money(balance)}
+Estimated turnaround after verified payment: ${o.turnaround}
+
+Terms reference: ${o.termsVersion}
+
+Please check the quantity, product details and destination carefully, and review the terms supplied with this order.
+
+CONFIRM ORDER & TERMS:
+${confirmLink(o)}
+
+Clicking the link prepares a confirmation reply to Tap & Connect. Please send that reply to confirm the order.
+
+Once I receive your confirmation, payment can be taken by the agreed method. The order only moves into processing once payment has been received and verified.
+
+Thanks,
+
+Tal Singh
+Tap & Connect
+Tap • Scan • Connect
+NFC + QR solutions for local businesses
+tapandconnectuk@gmail.com`;
+}
+
+$("generate").onclick=()=>{
+ const o=getForm();
+ if(!o.business||!o.email||!o.total){alert("Add the business name, customer email and order total.");return;}
+ if(!$("detailscheck").checked){alert("Please confirm you checked the customer and order details.");return;}
+ if(!$("termscheck").checked){alert("Confirm that the referenced terms will be provided before payment.");return;}
+ draft={...o,ref:nextRef(),status:"Draft",paid:0,payments:[],events:[{at:stamp(),text:"Order confirmation drafted"}]};
+ $("orderPreview").innerHTML=`<b>${draft.ref}</b> — ${esc(draft.business)}<br>${esc(draft.pkg)}<br>Total <b>${money(draft.total)}</b> • Initial payment <b>${money(draft.deposit)}</b> • Estimated turnaround <b>${esc(draft.turnaround)}</b>`;
+ $("approvalEmail").value=orderEmail(draft);
+ $("approvalCard").classList.remove("hidden");
+ $("approvalCard").scrollIntoView({behavior:"smooth",block:"start"});
+};
+
+$("saveAwaiting").onclick=()=>{
+ if(!draft)return;
+ draft.status="Awaiting customer confirmation";
+ draft.events.push({at:stamp(),text:"Confirmation request saved — awaiting customer reply"});
+ db.orders.unshift(draft);db.next++;persist();draft=null;$("approvalCard").classList.add("hidden");render();
+ alert("Saved. Send the confirmation request when ready.");
+};
+
+async function copyBox(id){try{await navigator.clipboard.writeText($(id).value);alert("Copied.");}catch{$(id).select();document.execCommand("copy");alert("Copied.");}}
+$("copyApproval").onclick=()=>copyBox("approvalEmail");
+
+function openMail(to,text){
+ const lines=text.split("\n"),sub=(lines[0]||"").replace(/^Subject:\s*/,""),body=lines.slice(2).join("\n");
+ location.href=`mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
+}
+$("openApproval").onclick=()=>openMail(draft?.email||$("email").value,$("approvalEmail").value);
+
+function markConfirmed(r){
+ const o=db.orders.find(x=>x.ref===r);if(!o)return;
+ o.status="Confirmed — awaiting payment";
+ o.events.push({at:stamp(),text:`Customer confirmation received against ${o.termsVersion}`});
+ persist();render();
+}
+
+function preparePaymentRequest(r){
+ const o=db.orders.find(x=>x.ref===r);if(!o)return;
+ const due=Math.min(o.deposit||o.total,Math.max(0,o.total-o.paid));
+ const txt=`Subject: Tap & Connect — Payment Due ${o.ref}
+
+Hi ${o.contact||"there"},
+
+Thanks for confirming your order.
+
+Order reference: ${o.ref}
+Order total: ${money(o.total)}
+Payment now due: ${money(due)}
+Remaining balance after this payment: ${money(Math.max(0,o.total-o.paid-due))}
+
+Please make payment using the agreed bank transfer or cash method.
+
+Once I can see the funds in the account, or have received the cash, I will send you a payment confirmation and confirm the estimated turnaround for your order.
+
+Thanks,
+
+Tal Singh
+Tap & Connect
+tapandconnectuk@gmail.com`;
+ navigator.clipboard.writeText(txt).then(()=>alert("Payment request copied. Paste into Gmail and add the payment details you want the customer to use.")).catch(()=>prompt("Copy payment request:",txt));
+ o.events.push({at:stamp(),text:"Payment request prepared"});persist();render();
+}
+
+function toggleTimeline(r){$("tl-"+r).classList.toggle("hidden");}
+
+function renderOrders(){
+ const box=$("ordersList");
+ if(!db.orders.length){box.innerHTML='<p style="color:var(--muted)">No orders yet.</p>';return;}
+ box.innerHTML=db.orders.map(o=>{
+  const bal=Math.max(0,o.total-o.paid);
+  const events=(o.events||[]).slice().reverse().map(e=>`<div class="event"><b>${esc(e.at)}</b><br>${esc(e.text)}</div>`).join("");
+  return `<div class="order">
+    <div class="orderTop"><div><div class="orderTitle">${esc(o.ref)} — ${esc(o.business)}</div><div class="meta">${esc(o.action)} • ${o.qty} unit(s)</div></div><span class="status ${o.status.includes("Paid in full")?"good":"wait"}">${esc(o.status)}</span></div>
+    <div class="money"><div class="metric"><small>TOTAL</small><b>${money(o.total)}</b></div><div class="metric"><small>PAID</small><b>${money(o.paid)}</b></div><div class="metric"><small>BALANCE</small><b>${money(bal)}</b></div></div>
+    <div class="btnrow">
+      ${o.status==="Awaiting customer confirmation"?`<button class="btn primary" onclick="markConfirmed('${o.ref}')">Customer confirmed</button>`:""}
+      ${o.status==="Confirmed — awaiting payment"?`<button class="btn secondary" onclick="preparePaymentRequest('${o.ref}')">Prepare payment request</button>`:""}
+      <button class="btn secondary" onclick="toggleTimeline('${o.ref}')">History</button>
+    </div>
+    <div class="timeline hidden" id="tl-${o.ref}">${events}</div>
+  </div>`;
+ }).join("");
+}
+
+function renderPay(){
+ const s=$("payOrder"),cur=s.value;
+ s.innerHTML='<option value="">Select confirmed order</option>'+db.orders
+  .filter(o=>!o.status.startsWith("Awaiting") && o.paid<o.total)
+  .map(o=>`<option value="${o.ref}">${o.ref} — ${esc(o.business)} — balance ${money(o.total-o.paid)}</option>`).join("");
+ if([...s.options].some(x=>x.value===cur))s.value=cur;
+}
+
+$("payOrder").onchange=()=>{
+ const o=db.orders.find(x=>x.ref===$("payOrder").value);
+ if(o)$("payAmount").value=Math.min(o.deposit||o.total,Math.max(0,o.total-o.paid)).toFixed(2);
+};
+
+function paymentEmail(o,p){
+ const balance=Math.max(0,o.total-o.paid);
+ const full=balance<0.005;
+ return `Subject: Tap & Connect — ${full?"Payment Receipt":"Payment Confirmation"} ${o.ref}
+
+Hi ${o.contact||"there"},
+
+Thank you. I confirm that I have received your payment for order ${o.ref}.
+
+Payment received: ${money(p.amount)}
+Payment method: ${p.method}
+Order total: ${money(o.total)}
+Total paid to date: ${money(o.paid)}
+Balance outstanding: ${money(balance)}
+Payment status: ${full?"PAID IN FULL":"PART PAYMENT RECEIVED"}
+
+Your order is now confirmed for processing.
+
+Estimated turnaround: ${o.turnaround}
+This estimate runs from verified payment and receipt of all information needed to complete the order. If anything outside my control affects the estimate, I will keep you updated.
+
+${full?"There is no remaining balance on this order.":`Remaining balance: ${money(balance)} — due as agreed, normally on delivery.`}
+
+I’ll contact you again when the order is ready.
+
+Thanks,
+
+Tal Singh
+Tap & Connect
+Tap • Scan • Connect
+tapandconnectuk@gmail.com`;
+}
+
+$("recordPayment").onclick=()=>{
+ const o=db.orders.find(x=>x.ref===$("payOrder").value);
+ if(!o){alert("Select an order.");return;}
+ if(!$("verified").checked){alert("Only record payment after you have verified the money is received.");return;}
+ const amt=Number($("payAmount").value||0);
+ if(amt<=0){alert("Enter the amount actually received.");return;}
+ const outstanding=Math.max(0,o.total-o.paid);
+ if(amt>outstanding+0.001 && !confirm("This is more than the outstanding balance. Record it anyway?"))return;
+ const p={amount:amt,method:$("payMethod").value,at:stamp()};
+ o.payments.push(p);o.paid=Number((o.paid+amt).toFixed(2));
+ o.status=o.paid>=o.total?"Paid in full — processing":"Part payment received — processing";
+ o.events.push({at:p.at,text:`Payment verified: ${money(amt)} via ${p.method}. Balance ${money(Math.max(0,o.total-o.paid))}`});
+ persist();
+ $("paymentEmail").value=paymentEmail(o,p);
+ $("paymentCard").classList.remove("hidden");
+ $("verified").checked=false;
+ render();
+};
+
+$("copyPayment").onclick=()=>copyBox("paymentEmail");
+$("openPayment").onclick=()=>{
+ const o=db.orders.find(x=>x.ref===$("payOrder").value);
+ openMail(o?.email||"",$("paymentEmail").value);
+};
+
+$("clear").onclick=()=>{
+ ["business","contact","email","phone","url","notes"].forEach(id=>$(id).value="");
+ $("package").value="49|25|1";$("package").onchange();
+ $("approvalCard").classList.add("hidden");draft=null;
+};
+
+$("exportBtn").onclick=()=>{
+ const blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+ a.download=`tap-connect-v3-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);
+};
+
+$("importFile").onchange=e=>{
+ const f=e.target.files[0];if(!f)return;
+ const r=new FileReader();
+ r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.orders))throw 0;if(confirm("Replace local records with this backup?")){db=d;persist();render();alert("Imported.")}}catch{alert("Invalid backup file.")}};
+ r.readAsText(f);
+};
+
+$("wipe").onclick=()=>{if(confirm("Delete all locally stored V3 order records?")){db={next:1,orders:[]};persist();render();}};
+
+function render(){renderOrders();renderPay();}
+render();
+
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}
+</script>
+</body>
+</html>
